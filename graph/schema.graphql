@@ -1,0 +1,21 @@
+type MemoryCreated @entity(immutable: true) {
+  id: Bytes!
+  memoryId: BigInt! # uint256
+  creator: Bytes! # address
+  ipfsHash: String! # string
+  memoryType: String! # string
+  timestamp: BigInt! # uint256
+  title: String! # string
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type TagAdded @entity(immutable: true) {
+  id: Bytes!
+  memoryId: BigInt! # uint256
+  tag: String! # string
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}

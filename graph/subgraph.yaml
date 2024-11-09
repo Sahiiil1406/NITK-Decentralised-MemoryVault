@@ -1,0 +1,29 @@
+specVersion: 1.0.0
+indexerHints:
+  prune: auto
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: Owner
+    network: optimism-sepolia
+    source:
+      address: "0x080E07811BAd7C06cc5aa54A806b45fDf772E6A2"
+      abi: Owner
+      startBlock: 19691932
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - MemoryCreated
+        - TagAdded
+      abis:
+        - name: Owner
+          file: ./abis/Owner.json
+      eventHandlers:
+        - event: MemoryCreated(indexed uint256,indexed address,string,string,uint256,string)
+          handler: handleMemoryCreated
+        - event: TagAdded(indexed uint256,string)
+          handler: handleTagAdded
+      file: ./src/owner.ts
